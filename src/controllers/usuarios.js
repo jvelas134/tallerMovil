@@ -45,7 +45,3 @@ export const crearUsuario = async (req = request, res = response) => {
     }
 }
 
-export const editarCliente = async (req, res = response) => {
-
-
-}

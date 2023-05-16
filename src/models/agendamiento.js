@@ -2,6 +2,7 @@ import { DataTypes } from "sequelize";
 import sequelize from "../database/conexion.js";
 import { Personas } from "./personas.js";
 
+
 /**
  * @openapi
  * components:
@@ -13,24 +14,25 @@ import { Personas } from "./personas.js";
  *           type: string
  *           example: "string"
  *         fecha_ini:
- *           type: datetime
- *           example: 2022-12-06 18:34:15
+ *           type: string
+ *           example: "string"
  *         fecha_fin:
- *            type: datetime
- *            example: 2022-12-06 18:34:15
- *        desc:
  *            type: string
  *            example: "string"
- *        personaId:
- *            type: integer
- *            example: 0
- *        tipoAgendamientoId:
- *            type: integer
- *            example: 0
+ *         desc:
+ *             type: string
+ *             example: "string"
+ *         personaId:
+ *             type: integer
+ *             example: 0
+ *         tipoAgendamientoId:
+ *             type: integer
+ *             example: 0
  *         estado:
  *            type: integer
  *            example: 0
  */
+
 export const Agendamientos = sequelize.define("agendamientos",
     {
         id: {

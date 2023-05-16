@@ -18,13 +18,12 @@ import sequelize from "../database/conexion.js";
  *            type: string
  *            example: "string"
  *         telefono:
- *            type: string
- *            example: "string"
- *        estado:
+ *             type: string
+ *             example: "string"
+ *         estado:
  *            type: integer
  *            example: 0
  */
-
 export const Personas = sequelize.define("personas",
     {
         id: {
