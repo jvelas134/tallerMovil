@@ -27,11 +27,11 @@ export const getUsuario = async (req, res = response) => {
 
 export const crearUsuario = async (req = request, res = response) => {
 
-    const { correo, contraseña, personaId, estado } = req.body;
+    const { correo, contraseña, estado } = req.body;
 
     try {
 
-        const usuarios = await Usuarios.create({ correo, contraseña, personaId, estado })
+        const usuarios = await Usuarios.create({ correo, contraseña, estado })
 
         res.json(usuarios);
 
@@ -45,3 +45,7 @@ export const crearUsuario = async (req = request, res = response) => {
     }
 }
 
+export const editarCliente = async (req, res = response) => {
+
+
+}

@@ -1,6 +1,8 @@
 import { response, request } from "express";
 import { Agendamientos } from "../models/agendamiento.js";
 import { TipoAgendamientos } from "../models/tipo_agendamiento.js";
+import { Usuarios } from "../models/usuarios.js";
+import { sendEmail } from "../config/correo.js";
 
 export const getAgendamientos = async (req, res = response) => {
 
@@ -26,18 +28,17 @@ export const getAgendamiento = async (req, res = response) => {
 
 export const crearAgendamiento = async (req = request, res = response) => {
 
-    const { titulo, fecha_ini, fecha_fin, desc, tipoAgendamientoId, personaId, estado } = req.body;
+    const { titulo, fecha_ini, fecha_fin, desc, tipoAgendamientoId, usuarioId, estado } = req.body;
 
     try {
 
-        const agendamientos = await Agendamientos.create({ titulo, fecha_ini, fecha_fin, desc, tipoAgendamientoId, personaId, estado  })
-
+        const agendamientos = await Agendamientos.create({ titulo, fecha_ini, fecha_fin, desc, tipoAgendamientoId, usuarioId, estado  })
+             
         res.json(agendamientos);
 
 
     } catch (error) {
-
-        console.log(error);
+         console.log(error);
         res.status(500).json({
             msg: 'Hable con el administrador'
         })

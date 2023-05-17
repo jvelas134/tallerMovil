@@ -1,7 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../database/conexion.js";
-import { Personas } from "./personas.js";
-
+import { Usuarios } from "./usuarios.js";
 
 /**
  * @openapi
@@ -14,25 +13,24 @@ import { Personas } from "./personas.js";
  *           type: string
  *           example: "string"
  *         fecha_ini:
- *           type: string
- *           example: "string"
+ *           type: datetime
+ *           example: 2022-12-06 18:34:15
  *         fecha_fin:
+ *            type: datetime
+ *            example: 2022-12-06 18:34:15
+ *        desc:
  *            type: string
  *            example: "string"
- *         desc:
- *             type: string
- *             example: "string"
- *         personaId:
- *             type: integer
- *             example: 0
- *         tipoAgendamientoId:
- *             type: integer
- *             example: 0
+ *        usuarioId:
+ *            type: integer
+ *            example: 0
+ *        tipoAgendamientoId:
+ *            type: integer
+ *            example: 0
  *         estado:
  *            type: integer
  *            example: 0
  */
-
 export const Agendamientos = sequelize.define("agendamientos",
     {
         id: {
@@ -55,7 +53,7 @@ export const Agendamientos = sequelize.define("agendamientos",
         tipoAgendamientoId:{
             type: DataTypes.INTEGER
          },
-        personaId:
+        usuarioId:
         {
           type: DataTypes.INTEGER
         },
@@ -70,8 +68,8 @@ export const Agendamientos = sequelize.define("agendamientos",
 );
 
 
-Personas.hasMany(Agendamientos , {
-    foreinkey: "personaId",
+Usuarios.hasMany(Agendamientos , {
+    foreinkey: "usuarioId",
     sourceKey: "id",
   });
-Agendamientos.belongsTo(Personas, { foreinkey: "personaId", targetId: "id" });
+Agendamientos.belongsTo(Usuarios, { foreinkey: "usuarioId", targetId: "id" });

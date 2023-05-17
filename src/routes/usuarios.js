@@ -37,7 +37,6 @@ const router = Router();
 router.post('/', [
     check('correo', 'El correo es obligatorio').not().isEmpty(),
     check('contraseña', 'La contraseña es obligatorio').not().isEmpty(),
-    check('personaId', 'La personaId es obligatorio').not().isEmpty(),
     check('estado', 'El estado es obligatorio').not().isEmpty(),
     validarCampos], crearUsuario);
 /**

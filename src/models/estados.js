@@ -1,43 +1,36 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../database/conexion.js";
-import { Personas } from "./personas.js";
 
 /**
  * @openapi
  * components:
  *   schemas:
- *     usuarios:
+ *     estados:
  *       type: object
  *       properties:
- *         correo:
+ *         nombre:
  *           type: string
  *           example: "string"
- *         contraseña:
- *           type: string
- *           example: "string"
- *         personaId:
- *            type: integer
- *            example: 0
  *         estado:
  *            type: integer
  *            example: 0
  */
-export const Usuarios = sequelize.define("usuarios",
+export const Estados = sequelize.define("estados_aprobaciones",
     {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
         },
-        correo: {
-            type: DataTypes.STRING
-        },
-        contraseña: {
-            type: DataTypes.STRING
+        nombre: {
+            type: DataTypes.INTEGER
         },
         estado: {
-            type: DataTypes.STRING
-        }
+            type: DataTypes.INTEGER
+        },
+        fecha_modificacion: {
+            type: DataTypes.DATE
+        },
 
     },
     {

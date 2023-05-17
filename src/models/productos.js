@@ -1,52 +1,64 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../database/conexion.js";
+import { Ordenes } from "./ordenes.js";
 
 /**
  * @openapi
  * components:
  *   schemas:
- *     personas:
+ *     productos:
  *       type: object
  *       properties:
  *         nombre:
  *           type: string
  *           example: "string"
- *         apellido:
+ *         ordeneId:
+ *           type: integer
+ *           example: 0
+ *         descripcion:
  *           type: string
  *           example: "string"
- *         edad:
+ *         alto:
  *            type: string
  *            example: "string"
- *         telefono:
+ *         ancho:
  *            type: string
  *            example: "string"
- *        estado:
+ *         estado:
  *            type: integer
  *            example: 0
  */
-
-export const Personas = sequelize.define("personas",
+export const Productos = sequelize.define("productos",
     {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
         },
+        consecutivo: {
+            type: DataTypes.INTEGER
+        },
         nombre: {
             type: DataTypes.STRING
         },
-        apellido: {
+        ordeneId: {
             type: DataTypes.STRING
         },
-        edad: {
+        descripcion: {
             type: DataTypes.STRING
         },
-        telefono: {
+        alto: {
+            type: DataTypes.STRING
+        },
+        ancho: {
             type: DataTypes.STRING
         },
         estado: {
             type: DataTypes.INTEGER
-        }
+        },
+        fecha_modificacion: {
+            type: DataTypes.DATE
+        },
 
     },
     {
@@ -54,5 +66,8 @@ export const Personas = sequelize.define("personas",
     }
 );
 
-
-
+Ordenes.hasMany(Productos, {
+    foreinkey: "ordeneId",
+    sourceKey: "id",
+  });
+  Productos.belongsTo(Ordenes, { foreinkey: "ordeneId", targetId: "id" });
