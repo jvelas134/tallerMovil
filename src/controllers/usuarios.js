@@ -1,11 +1,11 @@
 import { response, request } from "express";
 import { Usuarios } from "../models/usuarios.js";
-import { Personas } from "../models/personas.js";
+import { Agendamientos } from "../models/agendamiento.js";
 
 
 export const getUsuarios = async (req, res = response) => {
 
-    const usuarios = await Usuarios.findAll({include: Personas});
+    const usuarios = await Usuarios.findAll({include: Agendamientos});
 
     res.json(usuarios);
 }
@@ -14,7 +14,7 @@ export const getUsuario = async (req, res = response) => {
 
     const { id } = req.params;
 
-    const usuarios = await Usuarios.findByPk(id);
+    const usuarios = await Usuarios.findByPk(id, {include: Agendamientos});
 
     if (usuarios) {
         res.json(usuarios);

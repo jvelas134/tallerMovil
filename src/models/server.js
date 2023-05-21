@@ -8,7 +8,6 @@ import { PORTSWAGGER } from "../../config.js";
 
 import RoutesUsuarios from "../routes/usuarios.js";
 import RouterTipoAgendamientos from "../routes/tipo_agendamientos.js"
-import RouterPersona from "../routes/personas.js"
 import RouterAgendamiento from "../routes/agendamientos.js"
 import RouterCorreo from "../routes/correo.js"
 
@@ -52,7 +51,6 @@ class Server{
         
         this.app.use(this.apiPaths.usuarios, RoutesUsuarios);
         this.app.use(this.apiPaths.tipoagendamientos, RouterTipoAgendamientos);
-        this.app.use(this.apiPaths.personas, RouterPersona);
         this.app.use(this.apiPaths.agendamientos, RouterAgendamiento);
         this.app.use(this.apiPaths.correo, RouterCorreo);
 

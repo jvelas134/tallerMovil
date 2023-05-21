@@ -1,6 +1,5 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../database/conexion.js";
-import { Personas } from "./personas.js";
 
 /**
  * @openapi
@@ -15,9 +14,6 @@ import { Personas } from "./personas.js";
  *         contraseña:
  *           type: string
  *           example: "string"
- *         personaId:
- *            type: integer
- *            example: 0
  *         estado:
  *            type: integer
  *            example: 0
