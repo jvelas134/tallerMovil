@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import { check } from "express-validator";
 import { validarCampos } from "../middlewares/validar-campos.js";
-import { crearUsuario, getUsuario, getUsuarios } from "../controllers/usuarios.js";
+import { crearUsuario, getUsuario, getUsuarios, login } from "../controllers/usuarios.js";
 
 const router = Router();
 
@@ -94,5 +94,6 @@ router.get('/:id', getUsuario);
  */
 router.get('/', getUsuarios);
 
+router.post('/login', login);
 
 export default router;  

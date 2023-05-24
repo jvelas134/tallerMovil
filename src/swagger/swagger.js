@@ -27,7 +27,7 @@ const options = {
     },
     apis: ['src/models/usuarios.js','src/routes/usuarios.js',
            'src/routes/tipo_agendamientos.js',
-           'src/models/agendamientos.js','src/routes/agendamientos.js'],
+           'src/models/agendamiento.js','src/routes/agendamientos.js'],
 }
  
 const swaggerSpec = swaggerJsdoc(options)

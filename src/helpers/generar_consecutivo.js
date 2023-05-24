@@ -1,16 +1,26 @@
-import { Productos } from "../models/productos.js";
+import  jwt  from 'jsonwebtoken';
+import { SECRETORPRIVATEKEY } from '../../config.js';
+export const generarJWT  =  (  id= '' ) => {
 
-export const generarConsecutivo = async (max) => {
+    return new Promise( (resolve, reject) => {
+  
+   
+        const payload = { id };
 
-    let orden = 0
-    let numero = 0;
+        jwt.sign( payload, SECRETORPRIVATEKEY, {
+            expiresIn: '1h'
+        }, ( err, token ) => {
 
-    do {
-        numero = Math.floor(Math.random() * max);
-        orden = await Productos.findOne({ where: { consecutivo: numero } });
+            if ( err ) {
+                console.log(err);
+                reject( 'No se pudo generar el token' )
+            } else {
+                resolve( token );
+            }
+        })
 
-    } while (orden)
-
-    return numero
-
+    })
 }
+
+
+

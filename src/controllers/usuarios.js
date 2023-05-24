@@ -1,6 +1,7 @@
 import { response, request } from "express";
 import { Usuarios } from "../models/usuarios.js";
 import { Agendamientos } from "../models/agendamiento.js";
+import { generarJWT } from "../helpers/generar_consecutivo.js";
 
 
 export const getUsuarios = async (req, res = response) => {
@@ -45,7 +46,32 @@ export const crearUsuario = async (req = request, res = response) => {
     }
 }
 
-export const editarCliente = async (req, res = response) => {
+export const login = async (req, res = response) => {
+    const { correo, contraseña } = req.body;   
+    try {
+        const usuario = await Usuarios.findOne({where: {correo: correo}})
+        if(usuario){
+            if(contraseña == usuario.contraseña){
+              const token = await generarJWT(usuario.id);
+              res.status(200).json({
+                token: token,
+                data: usuario
+            })
+            }else{
+                res.status(404).json({
+                    msg: "correo o contraseña incorrecta"
+                })
+            }
+        }else{
+            res.status(500).json({
+                msg: 'correo o contraseña incorrecta'
+            })
+        }
 
-
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            msg: 'Hable con el administrador'
+        })
+    }
 }

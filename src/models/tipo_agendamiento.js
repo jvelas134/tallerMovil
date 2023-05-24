@@ -11,10 +11,10 @@ export const TipoAgendamientos = sequelize.define("tipo_agendamientos",
         },
         nombre: {
             type: DataTypes.STRING
-        },
-        estado: {
+        },   
+        estado: { 
             type: DataTypes.INTEGER
-        }
+        } 
 
     },
     {

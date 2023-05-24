@@ -13,23 +13,23 @@ import { Usuarios } from "./usuarios.js";
  *           type: string
  *           example: "string"
  *         fecha_ini:
- *           type: datetime
- *           example: 2022-12-06 18:34:15
+ *           type: date
+ *           example: "2022-12-09"
  *         fecha_fin:
- *            type: datetime
- *            example: 2022-12-06 18:34:15
- *        desc:
+ *            type: date
+ *            example: "2022-12-01"
+ *         desc:
  *            type: string
  *            example: "string"
- *        usuarioId:
+ *         usuarioId:
  *            type: integer
  *            example: 0
- *        tipoAgendamientoId:
- *            type: integer
- *            example: 0
- *         estado:
- *            type: integer
- *            example: 0
+ *         tipoAgendamientoId:
+ *             type: integer
+ *             example: 0
+ *          estado:
+ *             type: integer
+ *             example: 0
  */
 export const Agendamientos = sequelize.define("agendamientos",
     {
@@ -58,14 +58,14 @@ export const Agendamientos = sequelize.define("agendamientos",
           type: DataTypes.INTEGER
         },
         estado: {
-            type: DataTypes.INTEGER
+            type: DataTypes.INTEGER 
         }
 
     },
     {
         timestamps: false,
     }
-);
+); 
 
 
 Usuarios.hasMany(Agendamientos , {
