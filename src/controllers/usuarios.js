@@ -2,6 +2,7 @@ import { response, request } from "express";
 import { Usuarios } from "../models/usuarios.js";
 import { Agendamientos } from "../models/agendamiento.js";
 import { generarJWT } from "../helpers/generar_consecutivo.js";
+import { TipoAgendamientos } from "../models/tipo_agendamiento.js";
 
 
 export const getUsuarios = async (req, res = response) => {
@@ -15,7 +16,14 @@ export const getUsuario = async (req, res = response) => {
 
     const { id } = req.params;
 
-    const usuarios = await Usuarios.findByPk(id, {include: Agendamientos});
+    const usuarios = await Usuarios.findByPk(id, {include: [
+        {
+            model: Agendamientos,
+            attributes: {
+                model: TipoAgendamientos,
+                exclude: ['createdAt', 'updatedAt']
+            }
+        }]});
 
     if (usuarios) {
         res.json(usuarios);
